@@ -1,0 +1,7 @@
+    public void set$FiledName$(String $FiledNameToCamelCase$) {
+        this.$FiledNameToCamelCase$ = $FiledNameToCamelCase$;
+    }
+
+    public String get$FiledName$() {
+        return $FiledNameToCamelCase$;
+    }

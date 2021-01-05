@@ -1,0 +1,39 @@
+package $PackageName$;
+
+import $InBoPackageName$.$FileName$InBo;
+import $OutBoPackageName$.$FileName$OutBo;
+
+import com.ccb.openframework.persist.PaginationSupport;
+import java.util.List;
+
+public interface I$FileName$Dos {
+
+    /**
+     * 查询列表分页
+     * @param
+     * @return
+     */
+    PaginationSupport<$FileName$OutBo> selectPageList($FileName$InBo inBo);
+
+    /**
+     * 新增一条记录
+     * @param
+     * @return
+     */
+    int insert($FileName$InBo inBo);
+
+    /**
+     * 更新一条信息通过id
+     * @param
+     * @return
+     */
+    int updateById($FileName$InBo inBo);
+
+    /**
+     * 删除一条信息通过id
+     * @param
+     * @return
+     */
+    int deleteById($FileName$InBo inBo);
+
+}

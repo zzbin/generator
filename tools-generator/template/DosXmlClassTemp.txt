@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//IBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="$PackageName$.$FileNameToFirstLower$">
+    <sql id="selectColumns">
+$SelectColumns$
+    </sql>
+    <sql id="queryCondition">
+        from $TableName$
+        where 1=1
+    </sql>
+    <select id="selectPageList" parameterClass="$InBoPackageName$.$FileName$InBo" resultClass="$OutBoPackageName$.$FileName$OutBo">
+        select
+            <include refid="selectColumns"/>
+        <include refid="queryCondition"/>
+    </select>
+
+    <select id="selectPageList_COUNT" parameterClass="$InBoPackageName$.$FileName$InBo" resultClass="int">
+        select
+            count(1)
+        <include refid="queryCondition"/>
+    </select>
+
+    <insert id="insert" parameterClass="$InBoPackageName$.$FileName$InBo">
+        <![CDATA[
+            insert into $TableName$ (
+$InsertColumns$
+            )
+            values (
+$InsertColumnsValues$
+            )
+        ]]>
+    </insert>
+
+    <update id="updateById" parameterClass="$InBoPackageName$.$FileName$InBo">
+        <![CDATA[
+           update $TableName$ set
+$UpdateColumns$
+           where 1=1
+           and $TablePrimaryKey$ = #$TablePrimaryKeyToCamel$#
+        ]]>
+    </update>
+
+    <delete id="deleteById" parameterClass="$InBoPackageName$.$FileName$InBo">
+        <![CDATA[
+           delete from $TableName$
+           where 1=1
+           and $TablePrimaryKey$ = #$TablePrimaryKeyToCamel$#
+        ]]>
+    </delete>
+</sqlMap>

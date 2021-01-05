@@ -1,0 +1,66 @@
+package $PackageName$;
+
+import $InBoPackageName$.$FileName$InBo;
+import $OutBoPackageName$.$FileName$OutBo;
+import com.ibatis.common.resources.Resources;
+import com.ibatis.sqlmap.client.SqlMapClient;
+import com.ibatis.sqlmap.client.SqlMapClientBuilder;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import java.io.IOException;
+import java.io.Reader;
+import java.sql.SQLException;
+import java.util.List;
+
+public class $FileName$DosImplTest {
+
+    private static SqlMapClient sqlMapClient = null;
+
+    @BeforeClass
+    public static void beforeClass() throws IOException {
+        Reader reader = Resources.getResourceAsReader("SqlMapConfig.xml");
+        sqlMapClient = SqlMapClientBuilder.buildSqlMapClient(reader);
+    }
+
+    @Test
+    public void selectPageListTest() throws SQLException {
+        $FileName$InBo inBo = new $FileName$InBo();
+$SetValue$
+        List<$FileName$OutBo> userOutBoList = sqlMapClient.queryForList("$DosXmlPackageName$.$FileNameToFirstLower$.selectPageList", inBo);
+        System.out.println(userOutBoList);
+    }
+
+    @Test
+    public void selectPageList_COUNTTest() throws SQLException {
+        $FileName$InBo inBo = new $FileName$InBo();
+$SetValue$
+        int count = (int) sqlMapClient.queryForObject("$DosXmlPackageName$.$FileNameToFirstLower$.selectPageList_COUNT", inBo);
+        System.out.println(count);
+    }
+
+    @Test
+    public void insertTest() throws SQLException {
+        $FileName$InBo inBo = new $FileName$InBo();
+$SetValue$
+        Object result = sqlMapClient.insert("$DosXmlPackageName$.$FileNameToFirstLower$.insert", inBo);
+        System.out.println(result);
+    }
+
+    @Test
+    public void updateByIdTest() throws SQLException {
+        $FileName$InBo inBo = new $FileName$InBo();
+$SetValue$
+        int result = sqlMapClient.update("$DosXmlPackageName$.$FileNameToFirstLower$.updateById", inBo);
+        System.out.println(result);
+    }
+
+    @Test
+    public void deleteByIdTest() throws SQLException {
+        $FileName$InBo inBo = new $FileName$InBo();
+$SetValue$
+        int result = sqlMapClient.delete("$DosXmlPackageName$.$FileNameToFirstLower$.deleteById", inBo);
+        System.out.println(result);
+    }
+
+}

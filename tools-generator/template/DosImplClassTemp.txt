@@ -1,0 +1,54 @@
+package $PackageName$;
+
+import $InBoPackageName$.$FileName$InBo;
+import $OutBoPackageName$.$FileName$OutBo;
+import $DosInfPackageName$.I$FileName$Dos;
+import com.ccb.cms.pub.data.doc.inf.IBaseDos;
+
+import com.ccb.openframework.persist.PaginationSupport;
+import org.springframework.stereotype.Component;
+import java.util.List;
+
+@Component("$FileName$DosImpl")
+public class $FileName$DosImpl extends IBaseDos implements I$FileName$Dos {
+
+    /**
+     * 查询列表分页
+     * @param
+     * @return
+     */
+    @Override
+    public PaginationSupport<$FileName$OutBo> selectPageList($FileName$InBo inBo){
+        return (PaginationSupport<$FileName$OutBo>)_dos.findPaginatedBySqlMap("$DosXmlPackageName$.$FileNameToFirstLower$.selectPageList", inBo, inBo.getPagination().getStart(), inBo.getPagination().getRecInPage());
+    }
+
+    /**
+     * 新增一条记录
+     * @param
+     * @return
+     */
+    @Override
+    public int insert($FileName$InBo inBo){
+        return _dos.insertBySqlMap("$DosXmlPackageName$.$FileNameToFirstLower$.insert", inBo);
+    }
+
+    /**
+     * 更新一条信息通过id
+     * @param
+     * @return
+     */
+    @Override
+    public int updateById($FileName$InBo inBo){
+        return _dos.updateBySqlMap("$DosXmlPackageName$.$FileNameToFirstLower$.insert", inBo);
+    }
+
+    /**
+     * 删除一条信息通过id
+     * @param
+     * @return
+     */
+    @Override
+    public int deleteById($FileName$InBo inBo){
+        return _dos.deleteBySqlMap("$DosXmlPackageName$.$FileNameToFirstLower$.insert", inBo);
+    }
+}

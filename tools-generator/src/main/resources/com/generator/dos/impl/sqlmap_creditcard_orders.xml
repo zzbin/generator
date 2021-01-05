@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//IBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="com.generator.dos.impl.orders">
+    <sql id="selectColumns">
+        id AS id
+        ,user_id AS userId
+        ,number AS number
+        ,createtime AS createtime
+        ,note AS note
+    </sql>
+    <sql id="queryCondition">
+        from orders
+        where 1=1
+    </sql>
+    <select id="selectPageList" parameterClass="com.generator.po.OrdersInBo" resultClass="com.generator.po.OrdersOutBo">
+        select
+            <include refid="selectColumns"/>
+        <include refid="queryCondition"/>
+    </select>
+
+    <select id="selectPageList_COUNT" parameterClass="com.generator.po.OrdersInBo" resultClass="int">
+        select
+            count(1)
+        <include refid="queryCondition"/>
+    </select>
+
+    <insert id="insert" parameterClass="com.generator.po.OrdersInBo">
+        <![CDATA[
+            insert into orders (
+                user_id
+                ,number
+                ,createtime
+                ,note
+            )
+            values (
+                #userId#
+                ,#number#
+                ,#createtime#
+                ,#note#
+            )
+        ]]>
+    </insert>
+
+    <update id="updateById" parameterClass="com.generator.po.OrdersInBo">
+        <![CDATA[
+           update orders set
+                user_id = #userId#
+                ,number = #number#
+                ,createtime = #createtime#
+                ,note = #note#
+           where 1=1
+           and id = #id#
+        ]]>
+    </update>
+
+    <delete id="deleteById" parameterClass="com.generator.po.OrdersInBo">
+        <![CDATA[
+           delete from orders
+           where 1=1
+           and id = #id#
+        ]]>
+    </delete>
+</sqlMap>
