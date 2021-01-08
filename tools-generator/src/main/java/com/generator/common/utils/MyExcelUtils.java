@@ -13,10 +13,12 @@ import java.util.Map;
 
 public class MyExcelUtils {
 
+
+
     @Test
     public void test(){
         //获取excel所有Sheet的数据
-        File file = new File("excel\\test.xls");
+        File file = new File("excel\\A0911CA01.xls");
         Map<String, List<List>> resultMap = readExcel(file);
         System.out.println("list中的数据打印出来");
         for (String key : resultMap.keySet()) {
@@ -41,6 +43,19 @@ public class MyExcelUtils {
             }
             System.out.println();
         }
+    }
+
+    @Test
+    public void test2(){
+        List<List<String>> lists = readExcel(new File("excel\\A0911CA01.xls"), "request");
+        Map<String, String> listMap = new HashMap<>();
+        for (int i = 0; i < lists.size(); i++) {
+            if(i == 0){
+                continue;
+            }
+            listMap.put(lists.get(i).get(0), lists.get(i).get(1));
+        }
+        System.out.println(listMap);
     }
 
     /**
@@ -82,6 +97,8 @@ public class MyExcelUtils {
         }
         return null;
     }
+
+
 
     /**
      * 获取excel所有Sheet的数据
@@ -125,5 +142,18 @@ public class MyExcelUtils {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static Map<String, String> readExcelReturnMap(String excelFilePath, String sheetName) {
+        File excelFile = new File(excelFilePath);
+        List<List<String>> resultList = MyExcelUtils.readExcel(excelFile, sheetName);
+        Map<String, String> tansferMap = new HashMap<>();
+        for (int i = 0; i < resultList.size(); i++) {
+            if(i == 0){
+                continue;
+            }
+            tansferMap.put(resultList.get(i).get(0), resultList.get(i).get(1));
+        }
+        return tansferMap;
     }
 }

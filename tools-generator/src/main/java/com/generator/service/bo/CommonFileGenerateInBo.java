@@ -39,7 +39,10 @@ public class CommonFileGenerateInBo {
      * dos文件标识名，既只要是生成和dos相关的文件，都要包含这个标识
      */
     private String dosFileMarkName;
-
+    /**
+     * dos文件标识名，既只要是生成和dos相关的文件，都要包含这个标识
+     */
+    private String serviceFileMarkName;
     /**
      * inBo的包路径
      */
@@ -100,6 +103,79 @@ public class CommonFileGenerateInBo {
      * 表字段信息列表
      */
     private List<TableColumnInfoOutBo> tableColumnInfos;
+
+    /**
+     * inVo的包路径
+     */
+    private String inVoPackageName;
+    /**
+     * inVo模板文件路径
+     */
+    private String inVoTempFilePath;
+    /**
+     * outVo的包路径
+     */
+    private String outVoPackageName;
+    /**
+     * outVo模板文件路径
+     */
+    private String outVoTempFilePath;
+    /**
+     * service 接口的包路径
+     */
+    private String serviceInfPackageName;
+    /**
+     * service 接口模板文件路径
+     */
+    private String serviceInfTempFilePath;
+    /**
+     * service impl的包路径
+     */
+    private String serviceImplPackageName;
+    /**
+     * service impl模板文件路径
+     */
+    private String serviceImplTempFilePath;
+    /**
+     * service test的包路径
+     */
+    private String serviceTestPackageName;
+    /**
+     * service test模板文件路径
+     */
+    private String serviceTestTempFilePath;
+    /**
+     * bs 接口的包路径
+     */
+    private String bsInfPackageName;
+    /**
+     * bs 接口模板文件路径
+     */
+    private String bsInfTempFilePath;
+    /**
+     * bs impl的包路径
+     */
+    private String bsImplPackageName;
+    /**
+     * bs impl模板文件路径
+     */
+    private String bsImplTempFilePath;
+    /**
+     * 交易号
+     */
+    private String transferId;
+    /**
+     * 请求交易的excel模板文件，为了获取出参入参字段信息
+     */
+    private String accessExcelTempFile;
+    /**
+     * excel模板请求参数信息的Sheet页名称
+     */
+    private String excelRequestSheetName;
+    /**
+     * excel模板返回参数信息的Sheet页名称
+     */
+    private String excelResponseSheetName;
 
     public String getProjectPath() {
         return projectPath;
@@ -292,5 +368,157 @@ public class CommonFileGenerateInBo {
 
     public void setTestProjectPath(String testProjectPath) {
         this.testProjectPath = testProjectPath;
+    }
+
+    public String getInVoPackageName() {
+        return inVoPackageName;
+    }
+
+    public void setInVoPackageName(String inVoPackageName) {
+        this.inVoPackageName = inVoPackageName;
+    }
+
+    public String getInVoTempFilePath() {
+        return inVoTempFilePath;
+    }
+
+    public void setInVoTempFilePath(String inVoTempFilePath) {
+        this.inVoTempFilePath = inVoTempFilePath;
+    }
+
+    public String getOutVoPackageName() {
+        return outVoPackageName;
+    }
+
+    public void setOutVoPackageName(String outVoPackageName) {
+        this.outVoPackageName = outVoPackageName;
+    }
+
+    public String getOutVoTempFilePath() {
+        return outVoTempFilePath;
+    }
+
+    public void setOutVoTempFilePath(String outVoTempFilePath) {
+        this.outVoTempFilePath = outVoTempFilePath;
+    }
+
+    public String getServiceFileMarkName() {
+        return serviceFileMarkName;
+    }
+
+    public void setServiceFileMarkName(String serviceFileMarkName) {
+        this.serviceFileMarkName = serviceFileMarkName;
+    }
+
+    public String getTransferId() {
+        return transferId;
+    }
+
+    public void setTransferId(String transferId) {
+        this.transferId = transferId;
+    }
+
+    public String getAccessExcelTempFile() {
+        return accessExcelTempFile;
+    }
+
+    public void setAccessExcelTempFile(String accessExcelTempFile) {
+        this.accessExcelTempFile = accessExcelTempFile;
+    }
+
+    public String getExcelRequestSheetName() {
+        return excelRequestSheetName;
+    }
+
+    public void setExcelRequestSheetName(String excelRequestSheetName) {
+        this.excelRequestSheetName = excelRequestSheetName;
+    }
+
+    public String getExcelResponseSheetName() {
+        return excelResponseSheetName;
+    }
+
+    public void setExcelResponseSheetName(String excelResponseSheetName) {
+        this.excelResponseSheetName = excelResponseSheetName;
+    }
+
+    public String getServiceInfPackageName() {
+        return serviceInfPackageName;
+    }
+
+    public void setServiceInfPackageName(String serviceInfPackageName) {
+        this.serviceInfPackageName = serviceInfPackageName;
+    }
+
+    public String getServiceInfTempFilePath() {
+        return serviceInfTempFilePath;
+    }
+
+    public void setServiceInfTempFilePath(String serviceInfTempFilePath) {
+        this.serviceInfTempFilePath = serviceInfTempFilePath;
+    }
+
+    public String getServiceImplPackageName() {
+        return serviceImplPackageName;
+    }
+
+    public void setServiceImplPackageName(String serviceImplPackageName) {
+        this.serviceImplPackageName = serviceImplPackageName;
+    }
+
+    public String getServiceImplTempFilePath() {
+        return serviceImplTempFilePath;
+    }
+
+    public void setServiceImplTempFilePath(String serviceImplTempFilePath) {
+        this.serviceImplTempFilePath = serviceImplTempFilePath;
+    }
+
+    public String getServiceTestPackageName() {
+        return serviceTestPackageName;
+    }
+
+    public void setServiceTestPackageName(String serviceTestPackageName) {
+        this.serviceTestPackageName = serviceTestPackageName;
+    }
+
+    public String getServiceTestTempFilePath() {
+        return serviceTestTempFilePath;
+    }
+
+    public void setServiceTestTempFilePath(String serviceTestTempFilePath) {
+        this.serviceTestTempFilePath = serviceTestTempFilePath;
+    }
+
+    public String getBsInfPackageName() {
+        return bsInfPackageName;
+    }
+
+    public void setBsInfPackageName(String bsInfPackageName) {
+        this.bsInfPackageName = bsInfPackageName;
+    }
+
+    public String getBsInfTempFilePath() {
+        return bsInfTempFilePath;
+    }
+
+    public void setBsInfTempFilePath(String bsInfTempFilePath) {
+        this.bsInfTempFilePath = bsInfTempFilePath;
+    }
+
+    public String getBsImplPackageName() {
+        return bsImplPackageName;
+    }
+
+    public void setBsImplPackageName(String bsImplPackageName) {
+        this.bsImplPackageName = bsImplPackageName;
+    }
+
+    public String getBsImplTempFilePath() {
+        return bsImplTempFilePath;
+    }
+
+    public void setBsImplTempFilePath(String bsImplTempFilePath) {
+        this.bsImplTempFilePath = bsImplTempFilePath;
     }
 }

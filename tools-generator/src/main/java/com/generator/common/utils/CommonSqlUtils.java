@@ -9,10 +9,10 @@ import java.io.File;
 import java.util.List;
 
 public class CommonSqlUtils {
-    private static String DEFAULT_SQL_INSERT_COLUMN_TEMP_PATH = "template\\SqlInsertColumnTemp.txt";
-    private static String DEFAULT_SQL_INSERT_COLUMN_VALUE_TEMP_PATH = "template\\SqlInsertColumnValueTemp.txt";
-    private static String DEFAULT_SQL_SELECT_COLUMN_TEMP_PATH = "template\\SqlSelectColumnTemp.txt";
-    private static String DEFAULT_SQL_UPDATE_COLUMN_TEMP_PATH = "template\\SqlUpdateColumnTemp.txt";
+    private static String DEFAULT_SQL_INSERT_COLUMN_TEMP_PATH = "template\\sql\\SqlInsertColumnTemp.txt";
+    private static String DEFAULT_SQL_INSERT_COLUMN_VALUE_TEMP_PATH = "template\\sql\\SqlInsertColumnValueTemp.txt";
+    private static String DEFAULT_SQL_SELECT_COLUMN_TEMP_PATH = "template\\sql\\SqlSelectColumnTemp.txt";
+    private static String DEFAULT_SQL_UPDATE_COLUMN_TEMP_PATH = "template\\sql\\SqlUpdateColumnTemp.txt";
 
     /**
      * 生成sql select的字段信息

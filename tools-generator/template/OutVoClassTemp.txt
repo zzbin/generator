@@ -1,0 +1,6 @@
+package $PackageName$;
+
+public class $FileName$OutVo {
+$FieldInfos$
+$FieldGetAndSetMethod$
+}

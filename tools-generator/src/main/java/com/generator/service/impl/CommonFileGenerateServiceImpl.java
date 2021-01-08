@@ -1,9 +1,6 @@
 package com.generator.service.impl;
 
-import com.generator.common.utils.CommonBeanUtils;
-import com.generator.common.utils.CommonSqlUtils;
-import com.generator.common.utils.GenerateUtils;
-import com.generator.common.utils.MyStringUtils;
+import com.generator.common.utils.*;
 import com.generator.service.CommonFileGenerateService;
 import com.generator.service.bo.CommonFileGenerateInBo;
 import com.generator.service.bo.TableColumnInfoOutBo;
@@ -11,11 +8,12 @@ import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class CommonFileGenerateServiceImpl implements CommonFileGenerateService {
-
 
     @Override
     public String generatoDosImplFile(CommonFileGenerateInBo inBo) {
@@ -160,4 +158,68 @@ public class CommonFileGenerateServiceImpl implements CommonFileGenerateService 
         return generateFilePath;
     }
 
+    @Override
+    public String generatoInVoFile(CommonFileGenerateInBo inBo) {
+        String packageName = inBo.getInVoPackageName();
+        String fileName = inBo.getTransferId();
+        Map<String, String> tansferMap = MyExcelUtils.readExcelReturnMap(inBo.getAccessExcelTempFile(), inBo.getExcelRequestSheetName());
+        // 要生成的文件路径
+        String inBoFilePath = inBo.getServiceProjectPath() + inBo.getProjectIntenerJavaPath() + File.separator + packageName.replace(".", "\\");
+        // 文件名称
+        String generateName = fileName + "InVo.java";
+        // 生成文件
+        String generateFilePath = GenerateUtils.generateFile((tempStr)->{
+            tempStr = tempStr.replace("$FileName$", fileName) //文件名
+                    .replace("$PackageName$", packageName) //包名
+                    .replace("$FieldInfos$", CommonBeanUtils.getBeanColumnInfo(tansferMap))
+                    .replace("$FieldGetAndSetMethod$", CommonBeanUtils.getBeanGetAndSetMethods(tansferMap));
+            return tempStr;
+        }, new File(inBo.getInVoTempFilePath()), new File(inBoFilePath, generateName));
+        return generateFilePath;
+    }
+
+    @Override
+    public String generatoOutVoFile(CommonFileGenerateInBo inBo) {
+        String packageName = inBo.getOutVoPackageName();
+        String fileName = inBo.getTransferId();
+        Map<String, String> tansferMap = MyExcelUtils.readExcelReturnMap(inBo.getAccessExcelTempFile(), inBo.getExcelResponseSheetName());
+        // 要生成的文件路径
+        String inBoFilePath = inBo.getServiceProjectPath() + inBo.getProjectIntenerJavaPath() + File.separator + packageName.replace(".", "\\");
+        // 文件名称
+        String generateName = fileName + "OutVo.java";
+        // 生成文件
+        String generateFilePath = GenerateUtils.generateFile((tempStr)->{
+            tempStr = tempStr.replace("$FileName$", fileName) //文件名
+                    .replace("$PackageName$", packageName) //包名
+                    .replace("$FieldInfos$", CommonBeanUtils.getBeanColumnInfo(tansferMap))
+                    .replace("$FieldGetAndSetMethod$", CommonBeanUtils.getBeanGetAndSetMethods(tansferMap));
+            return tempStr;
+        }, new File(inBo.getOutVoTempFilePath()), new File(inBoFilePath, generateName));
+        return generateFilePath;
+    }
+
+    @Override
+    public String generatoServiceInfFile(CommonFileGenerateInBo inBo) {
+        return null;
+    }
+
+    @Override
+    public String generatoServiceImplFile(CommonFileGenerateInBo inBo) {
+        return null;
+    }
+
+    @Override
+    public String generatoServiceTestFile(CommonFileGenerateInBo inBo) {
+        return null;
+    }
+
+    @Override
+    public String generatoBsInfFile(CommonFileGenerateInBo inBo) {
+        return null;
+    }
+
+    @Override
+    public String generatoBsImplFile(CommonFileGenerateInBo inBo) {
+        return null;
+    }
 }
