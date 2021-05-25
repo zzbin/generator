@@ -1,0 +1,6 @@
+                    {
+                        label: '$lable$',
+                        name: '$name$',
+                        type: '$type$',
+                        span: $span$
+                    },

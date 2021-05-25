@@ -1,0 +1,10 @@
+                            {
+                                label: '$buttonLable$',
+                                name: '$buttonName$',
+                                scene: 'default',  //按钮的使用场景 normal/skip/dialog/default 按钮场景为default时,就是一个简单的click事件
+                                callback: (params, { data }) => {
+                                    // alert(`数据是${JSON.stringify(data)}`)
+                                    let id = data.id;
+                                    $zjUtils.openNewTab("$buttonUrl$" + id, "$windowName$");
+                                }
+                            },

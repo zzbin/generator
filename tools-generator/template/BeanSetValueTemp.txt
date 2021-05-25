@@ -1,2 +1,0 @@
-        //$ColumnComment$
-        $Prefix$.set$ColumnNameToUpper$("");

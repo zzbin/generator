@@ -1,0 +1,10 @@
+                    {
+                        label: '$lable$',
+                        name: '$name$',
+                        // type = operation 表示该表格项是一个操作栏 , 此时就可以配置data按钮组属性
+                        type: 'operation',
+                        width: 180,
+                        data: [
+$operationBtnInfo$
+                        ]
+                    },

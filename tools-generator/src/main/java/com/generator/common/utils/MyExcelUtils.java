@@ -32,7 +32,7 @@ public class MyExcelUtils {
         }
 
         //获取指定Sheet页的数据
-        List excelList2 = readExcel(file, "request");
+        List excelList2 = readExcel(file, "request", 1);
         System.out.println("list中的数据打印出来");
         for (int i = 0; i < excelList2.size(); i++) {
             List list = (List) excelList2.get(i);
@@ -47,9 +47,10 @@ public class MyExcelUtils {
      * 获取指定Sheet页的数据
      * @param excelFile excel文件路径
      * @param sheetName 指定Sheet的路径
+     * @param skipRow 跳过几行
      * @return List<List<String>> 外层list中的每个元素代表excel中的一行数据，内层List中的每个元素代表一个单元格的数据
      */
-    public static List<List<String>> readExcel(File excelFile, String sheetName) {
+    public static List<List<String>> readExcel(File excelFile, String sheetName, int skipRow) {
         try {
             // 创建输入流，读取Excel
             InputStream is = new FileInputStream(excelFile.getAbsolutePath());
@@ -60,7 +61,7 @@ public class MyExcelUtils {
             // 获取指定Sheet页数据
             Sheet sheet = wb.getSheet(sheetName);
             // sheet.getRows()返回该页的总行数
-            for (int i = 0; i < sheet.getRows(); i++) {
+            for (int i = skipRow; i < sheet.getRows(); i++) {
                 List<String> innerList = new ArrayList<String>();
                 // sheet.getColumns()返回该页的总列数
                 for (int j = 0; j < sheet.getColumns(); j++) {
@@ -70,7 +71,7 @@ public class MyExcelUtils {
                     }
                     innerList.add(cellinfo);
                 }
-                outerList.add(i, innerList);
+                outerList.add(i - skipRow, innerList);
             }
             return outerList;
         } catch (FileNotFoundException e) {

@@ -1,4 +1,0 @@
-    /**
-     * $FieldContent$
-     */
-    private $FileType$ $FieldName$;

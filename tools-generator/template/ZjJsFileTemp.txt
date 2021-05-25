@@ -1,0 +1,36 @@
+const tableWith$pageMark$ = new Vue({
+    el: '#tableWith$pageMark$',
+    data: function() {
+        return {
+            noMessage:false,//是否显示返回的提示信息条，默认为true
+            searchConfigWith$pageMark$: {
+                operationType: 'edit',
+                data: [
+$searchConfigParams$
+                ],
+            },
+            tableConfigWith$pageMark$: {
+                //可删除掉的
+                //border: true, // 创建一个带边框的表格 默认值：true 就按照默认的来
+                //stripe: true, // 创建一个带着斑马纹的表格项样式的表格 默认值：true 就按照默认的来
+
+
+                http: {
+                    url: toolkitPath + '/produce/reportRatify/findList.do',
+                    method: 'post',
+                    params: {
+                        status: "waitReportGenerate"
+                    }
+                },
+                paging: true, //是否带分页栏  默认值：true
+                order: true, //表格是否有序号栏 默认值：false
+                selection: false, //表格项是否可以选择  默认值：false
+                // createMode: true, //是否开启选中表格执行编辑的操作 默认false
+                expand: false, // 是否开启嵌套形表格 默认false
+                data: [
+$tableConfigParams$
+                ]
+            }
+        }
+    },
+})

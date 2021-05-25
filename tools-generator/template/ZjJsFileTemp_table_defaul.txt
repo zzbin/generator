@@ -1,0 +1,6 @@
+                    {
+                        label: '$lable$',  // 表格项要显示的名字
+                        name: '$name$', // 表格项对应内容的字段名
+                        //width: 200 //表格项的宽度 默认200
+                        //sortable: //对该列表项开启排序操作,配置 custom 每次点击排序操作会自动调用列表请求操作 true/false/custom
+                    },

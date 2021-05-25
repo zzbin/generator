@@ -6,7 +6,7 @@
                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:component-scan base-package="com.generator"/>
-    <context:property-placeholder location="mysql.properties"/>
+    <context:property-placeholder location="postgresql.properties"/>
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${jdbc.driver}"/>
