@@ -14,6 +14,20 @@ public class TableColumnInfoOutBo {
      */
     private String dataType;
 
+    /**
+     * 是否必填
+     * @return
+     */
+    private String isNull;
+
+    public String getIsNull() {
+        return isNull;
+    }
+
+    public void setIsNull(String isNull) {
+        this.isNull = isNull;
+    }
+
     public String getColumnName() {
         return columnName;
     }
