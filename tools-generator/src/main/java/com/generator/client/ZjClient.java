@@ -18,25 +18,30 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:applicationContext.xml"})
 public class ZjClient {
+    //excel模板文件path
+    private static String EXCEL_TEMP_FILE_PATH = "excel\\issued_report_list.xls";
     // 表名
     private static String TABLE_NAME = "mtl_rm";
     // 表主键 可为空，为空的话默认取查询出来的第一个字段
     private static String TABLE_PRIMARY_KEY = "id";
     // 页面标识
-    private static String PAGE_MARK = "ReportRatifyList";
+    private static String PAGE_MARK = "IssuedReportList";
     // 页面名称
-    private static String PAGE_NAME = "报告批准";
+    private static String PAGE_NAME = "已生成报告";
+    // 包路径
+    private static String PACKAGE_PATH = "report/reportmanage/";
 
     /**
      * JSP文件相关配置
      */
-    private static String JSP_FILE_NAME = "report_ratify_list";
-    private static String JSP_FILE_PATH = "E:\\project\\qclims\\trunk\\module_produce\\src\\main\\resources\\META-INF\\resources\\produce\\dataAudit";
+    private static String JSP_FILE_NAME = "issued_report_list";
+    private static String JSP_FILE_PATH = "E:\\project\\qclims\\trunk\\module_report\\src\\main\\resources\\META-INF\\resources\\report\\reportmanage";
     private static String JSP_TEMP_FILE_PATH = "template\\ZjJspFileTemp.txt";
 
     /**
@@ -49,7 +54,7 @@ public class ZjClient {
     @Test
     public void generatorCodeWithExcel(){
         //获取excel所有Sheet的数据
-        File file = new File("excel\\test.xls");
+        File file = new File(EXCEL_TEMP_FILE_PATH);
         List<List<String>> queryParamList = MyExcelUtils.readExcel(file, "query", 1);
         List<List<String>> tableParamList = MyExcelUtils.readExcel(file, "table", 1);
         List<List<String>> formParamList = MyExcelUtils.readExcel(file, "form", 1);
@@ -64,6 +69,7 @@ public class ZjClient {
         zjJspFileGenerateInBo.setTempFilePath(JSP_TEMP_FILE_PATH);
         zjJspFileGenerateInBo.setPageMark(PAGE_MARK);
         zjJspFileGenerateInBo.setPageName(PAGE_NAME);
+        zjJspFileGenerateInBo.setPackagePath(PACKAGE_PATH);
         String jspFile = zjJspFileGenerateService.generatoJspFile(zjJspFileGenerateInBo);
         System.out.println(jspFile);
 
@@ -82,7 +88,11 @@ public class ZjClient {
         System.out.println(jsFile);
     }
 
+    @Test
+    public void temp(){
 
+        System.out.println(Arrays.asList("1","2","3").contains("0"));
+    }
 
     /**
      * 查询表字段信息sql

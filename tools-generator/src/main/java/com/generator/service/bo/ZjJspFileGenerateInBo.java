@@ -11,6 +11,16 @@ public class ZjJspFileGenerateInBo {
     private String pageName;
     // 页面标识
     private String pageMark;
+    // 包路径
+    private String packagePath;
+
+    public String getPackagePath() {
+        return packagePath;
+    }
+
+    public void setPackagePath(String packagePath) {
+        this.packagePath = packagePath;
+    }
 
     public String getPageName() {
         return pageName;

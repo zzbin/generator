@@ -22,6 +22,7 @@ public class ZjJspFileGenerateServiceImpl implements ZjJspFileGenerateService {
         String generateFilePath = GenerateUtils.generateFile((tempStr)->{
             tempStr = tempStr.replace("$titleName$", inBo.getPageName()) //文件名
                     .replace("$pageMark$", inBo.getPageMark())
+                    .replace("$packagePath$", inBo.getPackagePath())
                     .replace("$pageFileName$", inBo.getFileName());
             return tempStr;
         }, tempFile, generatorFile);
