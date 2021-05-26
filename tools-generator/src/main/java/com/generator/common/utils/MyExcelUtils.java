@@ -67,7 +67,7 @@ public class MyExcelUtils {
                 for (int j = 0; j < sheet.getColumns(); j++) {
                     String cellinfo = sheet.getCell(j, i).getContents();
                     if(cellinfo.isEmpty()){
-                        continue;
+                        innerList.add("");
                     }
                     innerList.add(cellinfo);
                 }

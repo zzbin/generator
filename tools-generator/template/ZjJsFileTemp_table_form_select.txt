@@ -1,0 +1,10 @@
+                    {
+                        label: '$lable$',
+                        name: '$name$',
+                        type: 'form',  //表格项的类型 skip/time/form/image/tag/slot/status/operation
+                        formExtend: {  //当表格项的 type 设置为 form 时,formExtend 属性可以设置这个控件数据
+                            type: 'select',  //表单项的格式
+                            disabled: true, //表单项是否禁用 true/false
+                            ccsId: '$ccsId$',
+                        }
+                    },

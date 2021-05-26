@@ -4,6 +4,7 @@ import com.generator.common.utils.GenerateUtils;
 import com.generator.service.ZjJsFileGenerateService;
 import com.generator.service.bo.ZjJsFileGenerateInBo;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.io.File;
 import java.util.List;
@@ -40,13 +41,16 @@ public class ZjJsFileGenerateServiceImpl implements ZjJsFileGenerateService {
 
         List<List<String>> tableParamList = inBo.getTableParamList();
         StringBuffer retultData = new StringBuffer();
-        for (List<String> queryParam : tableParamList) {
+        for (List<String> tableParam : tableParamList) {
             String tempFilePath = "";
-            switch (queryParam.get(2)){
+            switch (tableParam.get(2)){
                 case "form":
-                    switch (queryParam.get(3)){
+                    switch (tableParam.get(3)){
                         case "switch":
                             tempFilePath = tempFileParentPath + "ZjJsFileTemp_table_form_switch.txt";
+                            break;
+                        case "select":
+                            tempFilePath = tempFileParentPath + "ZjJsFileTemp_table_form_select.txt";
                             break;
                     }
                     break;
@@ -57,27 +61,28 @@ public class ZjJsFileGenerateServiceImpl implements ZjJsFileGenerateService {
                     tempFilePath = tempFileParentPath + "ZjJsFileTemp_table_defaul.txt";
             }
             GenerateUtils.getTempFileContent((tempStr1) -> {
-
-                if("operation".equals(queryParam.get(2))){
-                    retultData.append(tempStr1.replace("$lable$", queryParam.get(0))
-                            .replace("$operationBtnInfo$", this.generatoroperationBtnInfo(inBo))
-                            .replace("$name$", queryParam.get(1)));
-                }else {
-                    retultData.append(tempStr1.replace("$lable$", queryParam.get(0))
-                            .replace("$name$", queryParam.get(1)));
-                }
+                retultData.append(tempStr1.replace("$lable$", tableParam.get(0))
+                        .replace("$operationBtnInfo$", this.generatoroperationBtnInfo(inBo, tableParam.get(2)))
+                        .replace("$ccsId$", tableParam.get(4))
+                        .replace("$name$", tableParam.get(1)));
                 return retultData.toString();
             }, new File(tempFilePath));
         }
         return retultData.toString();
     }
 
-    private CharSequence generatoroperationBtnInfo(ZjJsFileGenerateInBo inBo) {
+    private CharSequence generatoroperationBtnInfo(ZjJsFileGenerateInBo inBo, String type) {
+        if(!"operation".equals(type)){
+            return "";
+        }
+        List<List<String>> tableBtnParamList = inBo.getTableBtnParamList();
+        if(CollectionUtils.isEmpty(tableBtnParamList)){
+            return "";
+        }
         String tempFileParentPath = "";
         if(inBo.getTempFilePath().lastIndexOf("\\") != -1){
             tempFileParentPath = inBo.getTempFilePath().substring(0, inBo.getTempFilePath().lastIndexOf("\\")) + File.separator;
         }
-        List<List<String>> tableBtnParamList = inBo.getTableBtnParamList();
         StringBuffer retultData = new StringBuffer();
         for (List<String> queryParam : tableBtnParamList) {
             String tempFilePath = "";
